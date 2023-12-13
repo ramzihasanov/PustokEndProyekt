@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Areas",
+    "\\Areas\\Manage",
+    "\\Areas\\Manage\\Controllers",
+    "\\Areas\\Manage\\Views",
+    "\\Areas\\Manage\\Views\\Slider",
+    "\\Controllers",
+    "\\Migrations",
+    "\\Models",
+    "\\ViewModels"
+  ],
+  "SelectedNode": "\\Areas\\Manage\\Controllers\\SliderController.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,97 @@
+﻿@model MemberLoginViewModel
+<div class="site-wrapper" id="top">
+
+    <section class="breadcrumb-section">
+        <h2 class="sr-only">Site Breadcrumb</h2>
+        <div class="container">
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Login</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!--=============================================
+    =            Login Register page content         =
+    =============================================-->
+    <main class="page-section inner-page-sec-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 mb--30 mb-lg--0">
+                    <!-- Login Form s-->
+                    <form method="post">
+                        <div class="login-form">
+                            <h4 class="login-title">Welcome, Pustok</h4>
+                            <div class="row">
+                                <div class="col-md-12 col-12 mb--15">
+                                    <label>Username</label>
+                                    <input asp-for="Username" class="mb-0 form-control"
+                                           placeholder="Enter your Username">
+                                    <span asp-validation-for="Username"></span>
+                                </div>
+                                <div class="col-md-12 col-12 mb--15">
+                                    <label>Password</label>
+                                    <input asp-for="Password" class="mb-0 form-control"
+                                           placeholder="Enter your Password">
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-outlined">Login</button>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+<!--=================================
+  Brands Slider
+===================================== -->
+<section class="section-margin">
+    <h2 class="sr-only">Brand Slider</h2>
+    <div class="container">
+        <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
+                                            "autoplay": true,
+                                            "autoplaySpeed": 8000,
+                                            "slidesToShow": 6
+                                            }' data-slick-responsive='[
+                {"breakpoint":992, "settings": {"slidesToShow": 4} },
+                {"breakpoint":768, "settings": {"slidesToShow": 3} },
+                {"breakpoint":575, "settings": {"slidesToShow": 3} },
+                {"breakpoint":480, "settings": {"slidesToShow": 2} },
+                {"breakpoint":320, "settings": {"slidesToShow": 1} }
+            ]'>
+            <div class="single-slide">
+                <img src="image/others/brand-1.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-2.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-3.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-4.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-5.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-6.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-1.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-2.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>

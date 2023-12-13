@@ -1,0 +1,39 @@
+﻿@using Pustok.Core.Enums
+@using Pustok.Core.Models
+@using WebApplication6.Models
+@model List<Order>
+@{
+    ViewData["Title"] = "Profile";
+    var counter = 0;
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<div class="container" style="border: 1px solid #000; min-height:50vh">
+    <h1>Orders:</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order Id</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Created date</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var item in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@item.Id</td>
+                    <td>@item.TotalPrice.ToString("0.00") AZN</td>
+                    <td>@item.CreatedDate?.ToString("MMMM dd, yyyy H:mm:ss")</td>
+                    <td> <span class="badge text-white text-bg-@(item.OrderStatus == OrderStatus.Pending ? "secondary" : item.OrderStatus == OrderStatus.Accepted ? "success" : "danger")" style="padding: 0.4rem 0.8rem; font-size: 16px">@item.OrderStatus</span></td>
+                   
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
