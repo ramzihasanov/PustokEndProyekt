@@ -1,0 +1,64 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Detail";
+    var counter = 0;
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<div class="container">
+    <h1>Detail</h1>
+
+    <div class="card" style="width: 100%; ">
+        <div class="card-body">
+            <h5 class="card-title">Order Id: @Model.Id</h5>
+            <p class="card-text"><span class="fw-bold text-dark">Total amount:</span>  @Model.TotalPrice.ToString("0.00") AZN</p>
+            <p class="card-text"><span class="fw-bold text-dark">Fullname:</span>  @Model.FullName</p>
+            <p class="card-text"><span class="fw-bold text-dark">Email:</span>  @Model.Email</p>
+            <p class="card-text"><span class="fw-bold text-dark">Phone:</span>  @Model.Phone</p>
+            <p class="card-text"><span class="fw-bold text-dark">Country:</span>  @Model.Country</p>
+            <p class="card-text"><span class="fw-bold text-dark">Adress:</span>  @Model.Address</p>
+            <p class="card-text"><span class="fw-bold text-dark">Zipcode:</span>  @Model.ZipCode</p>
+            <p class="card-text"><span class="fw-bold text-dark">Note:</span>  @Model.Note</p>
+
+            <div style="border: 1px solid #000">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Bookname</th>
+                            <th scope="col">Sale Price</th>
+                            <th scope="col">Cost Price</th>
+                            <th scope="col">Discount percent</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderItems)
+                        {
+                            counter++;
+                            <tr>
+                                <th scope="row">@counter</th>
+                                <th scope="row">@item.BookName</th>
+                                <th scope="row">@item.SalePrice.ToString("0.00") Azn</th>
+                                <th scope="row">@item.CostPrice.ToString("0.00") Azn</th>
+                                <th scope="row">@item.DiscountPercent %</th>
+                                <th scope="row">@item.Count pcs</th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <form id="admin-comment-form" asp-action="reject" asp-controller="order" method="post">
+                    <label asp-for="AdminComment"> </label>
+                    <textarea asp-for="AdminComment"></textarea>
+                    <span asp-validation-for="AdminComment" class="text-danger"></span>
+                    <input  hidden value="@Model.Id"  asp-for="Id"/>
+                </form>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <a asp-action="accept" asp-controller="order" asp-route-id="@Model.Id" class="btn btn-success">Accept</a>
+            <button type="submit" form="admin-comment-form" class="btn btn-danger">Reject</button>
+            <a asp-action="index" asp-controller="order" class="btn btn-primary">Go back</a>
+        </div>
+    </div>
+</div>

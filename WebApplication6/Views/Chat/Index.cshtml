@@ -1,0 +1,74 @@
+﻿﻿@using Pustok.Core.Models;
+@model List<AppUser>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="list-group">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item"><span class="badge rounded bg-@(item.ConnectionId !=null ? "success" : "danger") " style="width:10px;height:10px;display:inline-block;"></span>@item.FullName</li>
+                }
+
+            </ul>
+           
+    </div>
+    <div class="col-lg-6">
+            <div class=" p-1">
+                <div>User</div>
+                <div><input type="text" id="userInput" /></div>
+            </div>
+            <div class="p-1">
+                <div>Message</div>
+                <div><input type="text" class="w-100" id="messageInput" /></div>
+            </div>
+            <div class="p-1">
+                <div>
+                    <input type="button" id="sendButton" value="Send Message" />
+                </div>
+            </div>
+            <div class="p-1">
+                <div>
+                    <hr />
+                </div>
+            </div>
+            <div class=" p-1">
+                <div>
+                    <ul id="messagesList"></ul>
+                </div>
+            </div>
+    </div>
+    </div>
+      
+
+</div>
+
+
+    @section jsFiles{
+        <script>
+            document.getElementById("sendButton").addEventListener("click", function () {
+                const userValue = document.getElementById("userInput").value;
+                const messageValue = document.getElementById("messageInput").value;
+
+                connection.invoke("SendMessage", userValue, messageValue);
+            })
+
+
+            connection.on("ReceiveMessage", function (user, message) {
+                const li = document.createElement("li");
+                li.innerText = user + ": " + message;
+                document.getElementById("messageList").append(li);
+            })
+
+            connection.on("OnConnect", function (userId) {
+
+                document.getElementById(userId).classList.remove("bg-danger")
+                document.getElementById(userId).classList.add("bg-success")
+            })
+            connection.on("DisConnect", function (userId) {
+
+                document.getElementById(userId).classList.remove("bg-success")
+                document.getElementById(userId).classList.add("bg-danger")
+            })
+
+        </script>
+    }

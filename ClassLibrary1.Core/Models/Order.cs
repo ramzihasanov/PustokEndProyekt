@@ -23,5 +23,6 @@ namespace Pustok.Core.Models
         public List<OrderItem> OrderItems { get; set; }
         public string? AppUserId { get; set; }
         public AppUser? AppUser { get; set; }
+        public string? AdminComment { get; set; }
     }
 }
